@@ -17,3 +17,7 @@ iiwa-2:
 wei:
   wei:
     path_to_data_directory: '/home/wei/data'
+
+armchair:
+  deformtrack:
+    path_to_data_directory: '/home/deformtrack/pytorch-dense-correspondence'
