@@ -23,13 +23,14 @@ apt install --no-install-recommends \
   cmake-curses-gui \
   libyaml-dev
 
-pip install --upgrade pip==9.0.3
+pip install --upgrade pip
 pip install -U setuptools
 
-apt-get -y install ipython ipython-notebook
+apt-get -y install ipython
 pip install \
+  ipython[notebook] \
   jupyter \
-  opencv-python \
+  opencv-python==4.2.0.32 \
   plyfile \
   pandas \
   tensorflow \

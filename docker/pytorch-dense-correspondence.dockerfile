@@ -1,4 +1,4 @@
-FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
+FROM nvidia/cuda:11.2.0-devel-ubuntu18.04
 
 ARG USER_NAME
 ARG USER_PASSWORD
@@ -17,7 +17,7 @@ RUN groupmod -g $USER_GID $USER_NAME
 
 WORKDIR /home/$USER_NAME
 ENV USER_HOME_DIR=/home/$USER_NAME
-
+ENV DEBIAN_FRONTEND=noninteractive
 
 COPY ./install_dependencies.sh /tmp/install_dependencies.sh
 RUN yes "Y" | /tmp/install_dependencies.sh
