@@ -204,6 +204,25 @@ class HeatmapVisualization(object):
         # self.rgb_1_tensor = self._dataset.rgb_image_to_tensor(img1_pil)
         # self.rgb_2_tensor = self._dataset.rgb_image_to_tensor(img2_pil)
 
+    def _hack_pil(self):
+        W, H = self.img2_pil.size
+        for x in range(W//3,W*2//3):
+            for y in range(H//3,H*2//3):
+                self.img2_pil.putpixel((x,y), (255, 255, 255))
+
+    def _hack_tensor(self, tensor):
+        # block the center part of the image
+        C, H, W = tensor.shape
+        hacked = tensor
+        hacked[:, H//3:H*2//3, W//3:W*2//3] = 255
+        return hacked
+
+    def _hack_image(self, img):
+        # block the center part of the image
+        H, W, C = img.shape
+        hacked = img
+        hacked[H//3:H*2//3, W//3:W*2//3, :] = 255
+        return hacked
 
     def _compute_descriptors(self):
         """
@@ -211,10 +230,14 @@ class HeatmapVisualization(object):
         :return:
         :rtype:
         """
+        self._hack_pil()
         self.img1 = pil_image_to_cv2(self.img1_pil)
         self.img2 = pil_image_to_cv2(self.img2_pil)
+        # self.img2 = self._hack_image(self.img2)
         self.rgb_1_tensor = self._dataset.rgb_image_to_tensor(self.img1_pil)
         self.rgb_2_tensor = self._dataset.rgb_image_to_tensor(self.img2_pil)
+        # print "TENSOR SHAPE: ", self.rgb_2_tensor.shape
+        # self.rgb_2_tensor = self._hack_image(self.rgb_2_tensor)
         self.img1_gray = cv2.cvtColor(self.img1, cv2.COLOR_RGB2GRAY) / 255.0
         self.img2_gray = cv2.cvtColor(self.img2, cv2.COLOR_RGB2GRAY) / 255.0
 
