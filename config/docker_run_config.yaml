@@ -21,3 +21,7 @@ wei:
 armchair:
   deformtrack:
     path_to_data_directory: '/home/deformtrack/pytorch-dense-correspondence'
+
+yixuan-911-MT:
+  yixuan:
+    path_to_data_directory: '/home/yixuan/pytorch-dense-correspondence'
