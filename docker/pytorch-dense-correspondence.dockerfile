@@ -1,5 +1,5 @@
 # FROM nvidia/cuda:11.0-cudnn8-devel-rc
-FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
+FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04
 
 ARG USER_NAME
 ARG USER_PASSWORD
