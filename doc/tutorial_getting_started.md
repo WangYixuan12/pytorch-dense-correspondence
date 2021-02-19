@@ -76,6 +76,7 @@ mkdir -p ~/.torch && sudo chown -R $USER:$USER ~/.torch
 ```
 cd pytorch-dense-correspondence/docker
 ./docker_run.py
+sudo apt-get install -y dbus-x11 # password is 'password'
 terminator ## this will pop open a new window, with a blue background, so you know you're in the docker container
 use_pytorch_dense_correspondence ## this sets necessary environment variables
 ./start_notebook.py
