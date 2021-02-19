@@ -36,6 +36,7 @@ git clone git@github.com:RobotLocomotion/pytorch-dense-correspondence.git
 cd pytorch-dense-correspondence
 git submodule update --init --recursive
 cd docker
+docker pull ${BASE IMAGE IN DOCKERFILE}
 ./docker_build.py
 ```
 
